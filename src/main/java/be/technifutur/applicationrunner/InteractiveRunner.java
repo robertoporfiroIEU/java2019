@@ -1,4 +1,5 @@
 package be.technifutur.applicationrunner;
+
 public class InteractiveRunner implements Runnable {
 
 	private InteractiveApplication application;
@@ -9,7 +10,7 @@ public class InteractiveRunner implements Runnable {
 	}
 
 	public void setEnv(Environnement env) {
-		if(env == null) {
+		if (env == null) {
 			throw new NullEnvironnementException();
 		}
 		this.env = env;
@@ -21,9 +22,10 @@ public class InteractiveRunner implements Runnable {
 			application.start();
 			while (!application.isFinish()) {
 				env.print(application.getScreen().toString());
-				if (!application.isFinish()) {
-					application.newInput(env.nextLine());
-				}
+				application.newInput(env.nextLine());
+			}
+			if (application.hasLastSreen()) {
+				env.print(application.getScreen().toString());
 			}
 			application.stop();
 		}

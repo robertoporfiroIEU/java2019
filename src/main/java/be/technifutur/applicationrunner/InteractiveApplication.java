@@ -13,4 +13,6 @@ public interface InteractiveApplication {
 
 	void stop();
 
+	boolean hasLastSreen();
+
 }
